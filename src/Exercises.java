@@ -1,7 +1,13 @@
-import java.util.Arrays;
+import java.util.*;
 
 public class Exercises {
 
+    
+    public static void main(String[] args) {
+        Exercises a = new Exercises();
+                
+        a.endsMeet(new String[] {"1"}, 1);
+    }
     
     /*
      * In pset-8:
@@ -19,13 +25,29 @@ public class Exercises {
 		return false;
 	}
 	
-	public String[] endsMeet(String[] values, int number) {
-	    String[] newArray = new String[number];
+	public String[] endsMeet(String[] values, int number) {	    
+	    
         if (values == null || values.length < number || number < 0) {
-            return newArray;
+            return new String[0];
         }
-        newArray = Arrays.copyOf(values, number);
+        
+        String[] newArray = new String[number*2];
+        String[] firstArray = Arrays.copyOfRange(values, 0, number);
+        String[] secondArray = Arrays.copyOfRange(reverseArray(values), 0, number);
+                
+        System.arraycopy(firstArray, 0, newArray, 0, firstArray.length);
+        System.arraycopy(secondArray, 0, newArray, firstArray.length, secondArray.length);
+        
         return newArray;
+	}
+	
+	public String [] reverseArray(String values[]) {
+	    for (int i = 0; i < (values.length / 2); i++) {
+	        String temp = values[i];
+	        values[i] = values[values.length - 1];
+	        values[values.length - 1] = temp;
+	    }
+	    return values;
 	}
 	
 	public int largestNumber(int[] numbers) {
