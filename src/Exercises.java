@@ -104,9 +104,39 @@ public class Exercises {
 	}
 	
 	public double biggest(double[] numbers) {
-		// write your code here
+		if (numbers == null || numbers.length < 3 || numbers.length % 2 == 0) {
+		    return -1;
+		}
 		
-		return -1;		// default return value to ensure compilation
+		for (double value : numbers) {
+		    if (value < 0) {
+		        return -1;
+		    }
+		}
+		
+		double first = numbers[0];
+		double middle = numbers[(numbers.length -1) / 2];
+		double last = numbers[numbers.length - 1];
+		
+		if (first > middle || first == middle) {
+		    if (first > last || first == last) {
+		        return first;
+		    }
+		}
+		
+		if (middle > first || middle == first) {
+		    if (middle > last || middle == last) {
+		        return middle;
+		    }
+		}
+		
+		if (last > first || last == first) {
+		    if (last > middle || last == middle) {
+		        return last;
+		    }
+		}
+	    		
+		return -1;
 	}
 	
 	public String[] middle(String[] values) {
