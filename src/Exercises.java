@@ -6,7 +6,7 @@ public class Exercises {
     public static void main(String[] args) {
         Exercises a = new Exercises();
                 
-        a.endsMeet(new String[] {"1"}, 1);
+        a.difference(new int[] {1, 2, 3});
     }
     
     /*
@@ -77,8 +77,13 @@ public class Exercises {
             for (int value : numbers) {
                 if (numbers[i] < value) {
                     counter++;
+                    System.out.println("numbers[i]: " + numbers[i]);
+                    System.out.println("value: " + value);
+                    System.out.println("counter: " + counter);
+                    System.out.println();
                 }
             }
+            
             if (oldCounter < counter) {
                 smallest = numbers[i];
                 oldCounter = counter;
@@ -88,17 +93,14 @@ public class Exercises {
         return smallest;
     }
 	
-	public int difference(int[] numbers) {
-	    int difference = -1;
-        
+	public int difference(int[] numbers) {        
         if (numbers == null || numbers.length < 1) {
-            return difference;
+            return -1;
         }
         
-        int smallest = smallestNumber(numbers);
-        int largest = largestNumber(numbers);
+        Arrays.sort(numbers);
         
-        return (largest - smallest);		// default return value to ensure compilation
+        return (numbers[numbers.length - 1] - numbers[0]);
 	}
 	
 	public double biggest(double[] numbers) {
