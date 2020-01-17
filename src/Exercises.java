@@ -50,48 +50,48 @@ public class Exercises {
 	    return values;
 	}
 	
-	public int largestNumber(int[] numbers) {
-        int largest = -1;
-        int counter = 0;
-        for (int i = 0; i < numbers.length; i++) {
-            int oldCounter = counter;
-            for (int value : numbers) {
-                if (numbers[i] > value) {
-                    counter++;
-                }
-            }
-            if (oldCounter < counter) {
-                largest = numbers[i];
-                oldCounter = counter;
-            }
-        }
-        
-        return largest;
-    }
-	
-	public int smallestNumber(int[] numbers) {
-        int smallest = -1;
-        int counter = 0;
-        for (int i = 0; i < numbers.length; i++) {
-            int oldCounter = counter;
-            for (int value : numbers) {
-                if (numbers[i] < value) {
-                    counter++;
-                    System.out.println("numbers[i]: " + numbers[i]);
-                    System.out.println("value: " + value);
-                    System.out.println("counter: " + counter);
-                    System.out.println();
-                }
-            }
-            
-            if (oldCounter < counter) {
-                smallest = numbers[i];
-                oldCounter = counter;
-            }
-        }
-        
-        return smallest;
-    }
+//	public int largestNumber(int[] numbers) {
+//        int largest = -1;
+//        int counter = 0;
+//        for (int i = 0; i < numbers.length; i++) {
+//            int oldCounter = counter;
+//            for (int value : numbers) {
+//                if (numbers[i] > value) {
+//                    counter++;
+//                }
+//            }
+//            if (oldCounter < counter) {
+//                largest = numbers[i];
+//                oldCounter = counter;
+//            }
+//        }
+//        
+//        return largest;
+//    }
+//	
+//	public int smallestNumber(int[] numbers) {
+//        int smallest = -1;
+//        int counter = 0;
+//        for (int i = 0; i < numbers.length; i++) {
+//            int oldCounter = counter;
+//            for (int value : numbers) {
+//                if (numbers[i] < value) {
+//                    counter++;
+//                    System.out.println("numbers[i]: " + numbers[i]);
+//                    System.out.println("value: " + value);
+//                    System.out.println("counter: " + counter);
+//                    System.out.println();
+//                }
+//            }
+//            
+//            if (oldCounter < counter) {
+//                smallest = numbers[i];
+//                oldCounter = counter;
+//            }
+//        }
+//        
+//        return smallest;
+//    }
 	
 	public int difference(int[] numbers) {        
         if (numbers == null || numbers.length < 1) {
