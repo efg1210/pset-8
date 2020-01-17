@@ -6,7 +6,7 @@ public class Exercises {
     public static void main(String[] args) {
         Exercises a = new Exercises();
                 
-        a.everywhere(new int[] {1, 2, 0, 4, 2, 0, 7, 2, 9}, 2);
+        a.everywhere(new int[] {1, 2, 3, 2, 5, 2, 7, 2, 9}, 2);
     }
     
     /*
@@ -197,19 +197,19 @@ public class Exercises {
 		    return true;
 		}
 		
-		counter = 0;
-		int counterGoal = ((2 * (numbers.length / 3)) - 2);
-		
-		for (int i = 1; i < (numbers.length - 1); i++) {
-		    if (numbers[i] != x) {
-		        if (numbers[i - 1] == x || numbers[i + 1] == x) {
-                    counter++;
-                }
-		    }
-		}
-		if (counter == counterGoal && numbers[1] == x) {
-            return true;
-        }
+//		counter = 0;
+//		int counterGoal = ((2 * (numbers.length / 3)) - 2);
+//		
+//		for (int i = 1; i < (numbers.length - 1); i++) {
+//		    if (numbers[i] != x) {
+//		        if (numbers[i - 1] == x || numbers[i + 1] == x) {
+//                    counter++;
+//                }
+//		    }
+//		}
+//		if (counter == counterGoal && numbers[1] == x) {
+//            return true;
+//        }
 		
 		/*
 		 * there are a number sets of 3
@@ -223,8 +223,8 @@ public class Exercises {
 		 * that is what counter should equal
 		 */
 		
-		System.out.println("counter: " + counter);
-		System.out.println("counterGoal: " + counterGoal);
+//		System.out.println("counter: " + counter);
+//		System.out.println("counterGoal: " + counterGoal);
 //		System.out.println("counter == (numbers.length / 3): " + (counter == (numbers.length / 3)));
 		
 		return false;	// default return value to ensure compilation
