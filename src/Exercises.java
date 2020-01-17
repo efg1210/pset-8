@@ -6,7 +6,7 @@ public class Exercises {
     public static void main(String[] args) {
         Exercises a = new Exercises();
                 
-        a.difference(new int[] {1, 2, 3});
+        a.everywhere(new int[] {1, 2, 0, 4, 2, 0, 7, 2, 9}, 2);
     }
     
     /*
@@ -32,9 +32,12 @@ public class Exercises {
         }
         
         String[] newArray = new String[number*2];
+        
         String[] firstArray = Arrays.copyOfRange(values, 0, number);
-        String[] secondArray = Arrays.copyOfRange(reverseArray(values), 0, number);
-                
+        String[] secondArray = Arrays.copyOfRange(values, (values.length - number), values.length);
+        
+        //String[] newArray = Arrays.copyOf(firstArray, firstArray.length);
+        
         System.arraycopy(firstArray, 0, newArray, 0, firstArray.length);
         System.arraycopy(secondArray, 0, newArray, firstArray.length, secondArray.length);
         
@@ -168,7 +171,61 @@ public class Exercises {
 	}
 	
 	public boolean everywhere(int[] numbers, int x) {
-		// write your code here
+		if (numbers == null || numbers.length < 1) {
+		    return false;
+		}
+		
+		int counter = 0;
+		for (int value : numbers) {
+		    if (value == x) {
+		        counter++;
+		    }
+		}
+		if (counter == numbers.length) {
+		    return true;
+		}
+		
+		counter = 0;
+		for (int i = 1; i < (numbers.length - 1); i++) {
+		    if (numbers[i] != x) {
+		        if (numbers[i - 1] == x && numbers[i + 1] == x) {
+		            counter++;
+		        }
+		    }
+		}
+		if (counter == (numbers.length / 2)) {
+		    return true;
+		}
+		
+		counter = 0;
+		int counterGoal = ((2 * (numbers.length / 3)) - 2);
+		
+		for (int i = 1; i < (numbers.length - 1); i++) {
+		    if (numbers[i] != x) {
+		        if (numbers[i - 1] == x || numbers[i + 1] == x) {
+                    counter++;
+                }
+		    }
+		}
+		if (counter == counterGoal && numbers[1] == x) {
+            return true;
+        }
+		
+		/*
+		 * there are a number sets of 3
+		 * counter go up twice for each set of three
+		 * then minus 1
+		 * 
+		 * so math:
+		 * divide length by 3
+		 * multiply by (2/3) to get 2/3s of that
+		 * -2
+		 * that is what counter should equal
+		 */
+		
+		System.out.println("counter: " + counter);
+		System.out.println("counterGoal: " + counterGoal);
+//		System.out.println("counter == (numbers.length / 3): " + (counter == (numbers.length / 3)));
 		
 		return false;	// default return value to ensure compilation
 	}
