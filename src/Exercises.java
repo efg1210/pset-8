@@ -5,7 +5,6 @@ public class Exercises {
     
     public static void main(String[] args) {
         Exercises a = new Exercises();
-                
         a.clumps(new String[] {"abc", "1", "2", "3", "abc", "7", "7", "7", "abc", "1", "2", "3", "abc"});
     }
     
@@ -35,9 +34,7 @@ public class Exercises {
         
         String[] firstArray = Arrays.copyOfRange(values, 0, number);
         String[] secondArray = Arrays.copyOfRange(values, (values.length - number), values.length);
-        
-        //String[] newArray = Arrays.copyOf(firstArray, firstArray.length);
-        
+                
         System.arraycopy(firstArray, 0, newArray, 0, firstArray.length);
         System.arraycopy(secondArray, 0, newArray, firstArray.length, secondArray.length);
         
@@ -108,7 +105,7 @@ public class Exercises {
 	    String middle = values[((values.length - 1) / 2)];
 	    String last = values[((values.length - 1) / 2) + 1];
 	    
-		return new String[] {first, middle, last};	// default return value to ensure compilation
+		return new String[] {first, middle, last};
 	}
 
 	public boolean increasing(int[] numbers) {
@@ -122,7 +119,7 @@ public class Exercises {
 	        }
 	    }
 		
-		return false;	// default return value to ensure compilation
+		return false;
 	}
 	
 	public boolean everywhere(int[] numbers, int x) {
@@ -174,7 +171,7 @@ public class Exercises {
             }
         }
 		
-		return false;	// default return value to ensure compilation
+		return false;
 	}
 	
 	public boolean consecutive(int[] numbers) {
@@ -191,7 +188,7 @@ public class Exercises {
             }
         }
 		
-		return false;	// default return value to ensure compilation
+		return false;
 	}
 	
 	public boolean balance(int[] numbers) {
@@ -214,7 +211,7 @@ public class Exercises {
 	        }
 	    }
 		
-		return false;	// default return value to ensure compilation
+		return false;
 	}
 	
 	public int clumps(String[] values) {
@@ -227,22 +224,21 @@ public class Exercises {
 	            return -1;
 	        }
 	    }
+	    if (values.length == 0 || values.length == 1) {
+	        return 0;
+	    }
 	    
-	    int clumps = 0;
-        String lastValue = "";
-        int index = 0;
+	    int clumpCounter = 0;
+	    String lastClump = "";
 	    
-	    for (int i = 0; i < values.length; i++) {
-	        if (lastValue == values[i]) {
-	            if (index + 1 == i) {
-	                clumps++;
-	            }
-	        } else {
-	            lastValue = values[i];
-	            index = i;
+	    for (int i = 0; i < values.length - 1; i++) {
+	        if (values[i].equals(values[i + 1]) && !lastClump.equals(values[i])) {
+	            clumpCounter++;
 	        }
+	        lastClump = values[i];
 	    }
 		
-		return clumps;		// default return value to ensure compilation
+		return clumpCounter;
+	    //return 53;
 	}
 }
