@@ -2,16 +2,6 @@ import java.util.*;
 
 public class Exercises {
 
-    
-    public static void main(String[] args) {
-        Exercises a = new Exercises();
-        a.clumps(new String[] {"abc", "1", "2", "3", "abc", "7", "7", "7", "abc", "1", "2", "3", "abc"});
-    }
-    
-    /*
-     * In pset-8/tests/:
-     ./grademe.sh endsMeet
-     * */
 	public boolean commonEnd(int[] a, int[] b) {
 		if (a == null || a.length == 0 || b == null || b.length == 0) {
 			return false;
@@ -215,7 +205,6 @@ public class Exercises {
 	}
 	
 	public int clumps(String[] values) {
-		// write your code here
 	    if (values == null) {
 	        return -1;
 	    }
@@ -239,6 +228,5 @@ public class Exercises {
 	    }
 		
 		return clumpCounter;
-	    //return 53;
 	}
 }
