@@ -6,7 +6,7 @@ public class Exercises {
     public static void main(String[] args) {
         Exercises a = new Exercises();
                 
-        a.everywhere(new int[] {1, 2, 3, 2, 5, 2, 7, 2, 9}, 2);
+        a.clumps(new String[] {"abc", "1", "2", "3", "abc", "7", "7", "7", "abc", "1", "2", "3", "abc"});
     }
     
     /*
@@ -52,49 +52,6 @@ public class Exercises {
 	    }
 	    return values;
 	}
-	
-//	public int largestNumber(int[] numbers) {
-//        int largest = -1;
-//        int counter = 0;
-//        for (int i = 0; i < numbers.length; i++) {
-//            int oldCounter = counter;
-//            for (int value : numbers) {
-//                if (numbers[i] > value) {
-//                    counter++;
-//                }
-//            }
-//            if (oldCounter < counter) {
-//                largest = numbers[i];
-//                oldCounter = counter;
-//            }
-//        }
-//        
-//        return largest;
-//    }
-//	
-//	public int smallestNumber(int[] numbers) {
-//        int smallest = -1;
-//        int counter = 0;
-//        for (int i = 0; i < numbers.length; i++) {
-//            int oldCounter = counter;
-//            for (int value : numbers) {
-//                if (numbers[i] < value) {
-//                    counter++;
-//                    System.out.println("numbers[i]: " + numbers[i]);
-//                    System.out.println("value: " + value);
-//                    System.out.println("counter: " + counter);
-//                    System.out.println();
-//                }
-//            }
-//            
-//            if (oldCounter < counter) {
-//                smallest = numbers[i];
-//                oldCounter = counter;
-//            }
-//        }
-//        
-//        return smallest;
-//    }
 	
 	public int difference(int[] numbers) {        
         if (numbers == null || numbers.length < 1) {
@@ -143,7 +100,6 @@ public class Exercises {
 	}
 	
 	public String[] middle(String[] values) {
-		// write your code here
 	    if (values == null || values.length < 3 || values.length % 2 == 0) {
             return new String[0];
         }
@@ -156,7 +112,6 @@ public class Exercises {
 	}
 
 	public boolean increasing(int[] numbers) {
-		// write your code here
 	    if (numbers == null || numbers.length < 3) {
 	        return false;
 	    }
@@ -175,6 +130,7 @@ public class Exercises {
 		    return false;
 		}
 		
+		//checks if everything is x
 		int counter = 0;
 		for (int value : numbers) {
 		    if (value == x) {
@@ -185,53 +141,43 @@ public class Exercises {
 		    return true;
 		}
 		
+		//checks if every other is x
 		counter = 0;
-		for (int i = 1; i < (numbers.length - 1); i++) {
-		    if (numbers[i] != x) {
-		        if (numbers[i - 1] == x && numbers[i + 1] == x) {
-		            counter++;
-		        }
+		for (int i = 0; i < 2; i++) {
+		    for (int j = i; j < numbers.length; j += 2) {
+    		    if (numbers[j] == x) {
+    		        counter++;
+    		    }
+		    }
+		    if (numbers.length % 2 == 1 && numbers[0] == x && numbers[numbers.length - 1] == x) {
+		        if (counter == ((numbers.length + 1) / 2)) {
+	                return true;
+	            }
+		    } else {
+		        if (counter == numbers.length / 2) {
+	                return true;
+	            }
 		    }
 		}
-		if (counter == (numbers.length / 2)) {
-		    return true;
-		}
-		
-//		counter = 0;
-//		int counterGoal = ((2 * (numbers.length / 3)) - 2);
-//		
-//		for (int i = 1; i < (numbers.length - 1); i++) {
-//		    if (numbers[i] != x) {
-//		        if (numbers[i - 1] == x || numbers[i + 1] == x) {
-//                    counter++;
-//                }
-//		    }
-//		}
-//		if (counter == counterGoal && numbers[1] == x) {
-//            return true;
-//        }
-		
-		/*
-		 * there are a number sets of 3
-		 * counter go up twice for each set of three
-		 * then minus 1
-		 * 
-		 * so math:
-		 * divide length by 3
-		 * multiply by (2/3) to get 2/3s of that
-		 * -2
-		 * that is what counter should equal
-		 */
-		
-//		System.out.println("counter: " + counter);
-//		System.out.println("counterGoal: " + counterGoal);
-//		System.out.println("counter == (numbers.length / 3): " + (counter == (numbers.length / 3)));
+				
+		//checks if every third is x
+		counter = 0;
+        for (int i = 0; i < 3; i++) {
+            counter = 0;
+            for (int j = i; j < numbers.length; j += 3) {
+                if (numbers[j] == x) {
+                    counter++;
+                }
+            }
+            if (counter == numbers.length / 3) {
+                return true;
+            }
+        }
 		
 		return false;	// default return value to ensure compilation
 	}
 	
 	public boolean consecutive(int[] numbers) {
-		// write your code here
 	    if (numbers == null || numbers.length < 3) {
             return false;
         }
@@ -249,7 +195,6 @@ public class Exercises {
 	}
 	
 	public boolean balance(int[] numbers) {
-		// write your code here
 	    if (numbers == null || numbers.length < 2) {
 	        return false;
 	    }
@@ -274,7 +219,30 @@ public class Exercises {
 	
 	public int clumps(String[] values) {
 		// write your code here
+	    if (values == null) {
+	        return -1;
+	    }
+	    for (String s : values) {
+	        if (s == null) {
+	            return -1;
+	        }
+	    }
+	    
+	    int clumps = 0;
+        String lastValue = "";
+        int index = 0;
+	    
+	    for (int i = 0; i < values.length; i++) {
+	        if (lastValue == values[i]) {
+	            if (index + 1 == i) {
+	                clumps++;
+	            }
+	        } else {
+	            lastValue = values[i];
+	            index = i;
+	        }
+	    }
 		
-		return -1;		// default return value to ensure compilation
+		return clumps;		// default return value to ensure compilation
 	}
 }
